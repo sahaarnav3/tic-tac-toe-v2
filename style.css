@@ -1,0 +1,211 @@
+*{
+    box-sizing: border-box;
+}
+
+
+body {
+    padding: 0;
+    margin: 0;
+    background: url("https://www.dropbox.com/s/2ct0i6kc61vp0bh/wall.jpg?raw=1");
+}
+.disp{
+    display: none;
+}
+/*hello*/
+
+
+h1 {
+    text-align: center;
+    text-emphasis: bold;
+    font-size: 100px;
+    font-family: "Vibur", cursive;
+    color: red;
+    text-shadow: 0 0 10px red,0 0 0px red,0 0 180px red,0 0 80px red,0 0 160px;
+    
+}
+
+.selector {
+    display: flex;
+    justify-content: space-between;
+    height: 25%;
+    width:70%;
+    top: 50%;
+    left: 14%;
+    position: absolute;
+}
+.button {
+    width: 47%;
+    background-color: black;
+    color: red;
+    border-color: red;
+    border-radius:30px;
+    border-width: 4px;
+    font-size: 60px;
+    font-family: "Vibur","Popins", cursive;
+    filter: blur(.6px);
+    font-weight: 100;
+    text-shadow: 0 0 100px red,0 0 90px red,0 0 100px red,0 0 90px red,0 0 190px;
+    box-shadow: 0 0 1px red,0 0 10px red,0 0 1px red,0 0 1px red,0 0 100px red;
+}
+.button:hover {
+    cursor: pointer;
+    color: wheat;
+    box-shadow: 0 0 1px wheat,0 0 10px wheat,0 0 1px wheat,0 0 1px wheat,0 0 100px wheat;
+    text-shadow: 0 0 100px wheat,0 0 90px wheat,0 0 100px wheat,0 0 90px wheat,0 0 190px wheat;
+    transition: .3s;
+}
+
+.gboard {
+    position: absolute;
+    display: flex;
+    width: 69%;
+    height: 100%;
+    left: 15.5%;
+    top:0%;
+}
+.status-action {
+    margin-top: 2%;
+    font-family: "Vibur", cursive;
+    font-size: 60px;
+    color: yellow;
+    text-shadow: 0 0 10px yellow,0 0 0px yellow,0 0 180px yellow,0 0 80px yellow,0 0 160px yellow;
+}
+
+.reset {
+    position: absolute;
+    cursor: pointer;
+    left: 80%;
+    top: 2%;
+}
+.reset:hover {
+    color: red;
+    text-shadow: 0 0 10px red,0 0 0px red,0 0 180px red,0 0 80px red,0 0 160px red;
+}
+
+.game-grid {
+    position: absolute;
+    top: 17%;
+    left: 20.5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+.game-cell {
+    height: 202px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    align-items: center;
+}
+.gc1 {
+    border-right: 1.5px solid blue;
+    border-bottom: 1.5px solid blue;
+    border-radius: 5px;
+    box-shadow: 6px 6px 9px 0.4px blue, 0px 0px 0px 0px blue, 0px 0 0px 0px blue, 0px 0px 0px 0px blue;
+}
+.gc2 {
+    border-left: 1.5px solid blue;
+    border-bottom: 1.5px solid blue;
+    border-right: 1.5px solid blue;
+    border-radius: 5px;
+    box-shadow: 6px 6px 9px 0.4px blue, -7px 7px 9px -1px blue, 0px 0 0px 0px blue, 0px 0px 0px 0px blue;
+}
+.gc3 {
+    border-left: 1.5px solid blue;
+    border-bottom: 1.5px solid blue;
+    border-radius: 5px;
+    box-shadow: -6px 6px 9px -0.1px blue;
+}
+.gc4 {
+    border-right: 1.5px solid blue;
+    border-bottom: 1.5px solid blue;
+    border-top: 1.5px solid blue;
+    border-radius: 5px;
+    box-shadow: 7px 6px 10px 0.9px blue, 0px -15px 10px -9px #0000ff;
+}
+.gc5 {
+    border-right: 1.5px solid blue;
+    border-bottom: 1.5px solid blue;
+    border-top: 1.5px solid blue;
+    border-left: 1.5px solid blue;
+    border-radius: 5px;
+    box-shadow: 6px 6px 9px 0.4px blue, -7px 7px 9px -1px blue, 0px -10px 9px -4px blue, 0px 0px 0px 0px blue;
+}
+.gc6 {
+    border-bottom: 1.5px solid blue;
+    border-top: 1.5px solid blue;
+    border-left: 1.5px solid blue;
+    border-radius: 5px;
+    box-shadow: -7px -7px 9px -1px blue, -5px 7px 9px -1px blue, 0px 0 0px 0px blue, 0px 0px 0px 0px blue;
+}
+.gc7 {
+    border-top: 1.5px solid blue;
+    border-right: 1.5px solid blue;
+    border-radius: 5px;
+    box-shadow: 6px -6px 9px 0.4px blue, 0px 0px 0px 0px blue, 0px 0 0px 0px blue, 0px 0px 0px 0px blue;
+
+}
+.gc8 {
+    border-top: 1.5px solid blue;
+    border-right: 1.5px solid blue;
+    border-left: 1.5px solid blue;
+    border-radius: 5px;
+    box-shadow: 6px -6px 9px 0.4px blue, -10px -1px 9px -5px blue, 0px 0 0px 0px blue, 0px 0px 0px 0px blue;
+}
+.gc9 {
+    border-top: 1.5px solid blue;
+    border-left: 1.5px solid blue;
+    border-radius: 5px;
+    box-shadow: -6px -6px 9px 0.4px blue;
+
+}
+
+.X::after {
+    content: '🗴';
+    font-size: 170px;
+    color: red;
+    text-shadow: 0 0 10px red,0 0 0px red,0 0 180px red,0 0 80px red,0 0 160px red;
+}
+.O::after {
+    content: 'Ö';
+    font-family: cursive;
+    font-size: 120px;
+    color: white;
+    text-shadow: 0 0 10px white,0 0 0px white,0 0 180px white,0 0 80px white,0 0 160px white;
+}
+
+.wincol::after {
+    color: green;
+    text-shadow: 0 0 10px green,0 0 0px green,0 0 180px green,0 0 80px green,0 0 160px green;
+}
+.X, .O {
+    cursor: default;
+}
+
+/*Now to make things responsive*/
+@media only screen and (max-width: 1024px) {
+    .game-grid{
+        margin-top: 25px;
+        grid-gap: 10px;
+    }
+    .game-cell {
+        height: 150px;
+        width: 150px;
+    }
+    .X::after {font-size: 150px;}
+    .O::after {font-size: 125px;}
+}
+@media only screen and (max-width: 540px) {
+    .game {
+        margin: 25px;
+        padding: 25px;
+    }
+    .game-cell {
+        height: 100px;
+        width: 100px;
+    }
+    .X::after {font-size: 100px;}
+    .O::after {font-size: 75px;}
+}
