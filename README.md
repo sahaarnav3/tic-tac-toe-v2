@@ -1,2 +1,2 @@
 # tic-tac-toe-v2
-Version 2 of my previous game
+As said i added 2 player modes in this version, one for single player mode and one for double player mode.
