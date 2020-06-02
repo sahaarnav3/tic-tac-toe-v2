@@ -5,7 +5,6 @@ const cellDivs = document.querySelectorAll('.game-cell');
 const button1 = document.querySelector('.op');
 const button2 = document.querySelector('.tp');
 let value = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
-let value1 = [0,1,2,3,4,5,6,7,8];
 let autoCell = ["gc1","gc2","gc3","gc4","gc5","gc6","gc7","gc8","gc9"];
 
 //game variables
@@ -13,7 +12,6 @@ let gameIsLive = true;
 let xIsNext = true;
 let xIsNext1 = true;
 let winner = null;
-
 
 
 //functions
@@ -144,10 +142,11 @@ const handleCellClick = (e) => {
 };
 
 const handleCellClick1 = (e) => {
+    if (gameIsLive){
     const classList = e.target.classList;
     const location = classList[1];
     console.log("Location = ",location);
-    if (xIsNext1 && gameIsLive && classList[2] != 'X' && classList[2] != 'O' ){
+    if (xIsNext1 && classList[2] != 'X' && classList[2] != 'O' ){
         e.target.classList.add('X');
         checkGameStatus(location);     
         const ac = autoCell.indexOf(location);
@@ -163,13 +162,14 @@ const handleCellClick1 = (e) => {
         }
         if (!xIsNext1){
         for (const cellDiv1 of cellDivs){
-            if (gameIsLive && cellDiv1.classList[1] == compCell && cellDiv1.classList[2] != 'X' && cellDiv1.classList[2] != 'O'){
+            if (cellDiv1.classList[1] == compCell && cellDiv1.classList[2] != 'X' && cellDiv1.classList[2] != 'O'){
                 cellDiv1.classList.add('O');
                 checkGameStatus(compCell);
             }
         }
     }
     console.log('autoCell :>> ', autoCell);
+}
 };
 
 
