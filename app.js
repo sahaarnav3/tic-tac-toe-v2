@@ -11,6 +11,7 @@ let autoCell = ["gc1","gc2","gc3","gc4","gc5","gc6","gc7","gc8","gc9"];
 //game variables
 let gameIsLive = true;
 let xIsNext = true;
+let xIsNext1 = true;
 let winner = null;
 
 
@@ -94,19 +95,21 @@ function checkGameStatus(location){
         statusDiv.innerHTML = `$It's A Tie .`;
     }
     else {
-        if (xIsNext){
+        if (xIsNext || xIsNext1){
             statusDiv.innerHTML = `2's Chance`;
         }
         else{
             statusDiv.innerHTML = `1's Chance`;
         }
         xIsNext = !xIsNext;
+        xIsNext1 = !xIsNext1;
     }
 }
 
 //event handlers
 const handleReset = (e) => {
     xIsNext = true;
+    xIsNext1 = true;
     statusDiv.innerHTML = `1's Chance`;
     winner = null;
     gameIsLive = true;
@@ -118,7 +121,7 @@ const handleReset = (e) => {
     for (let i=0; i < 9; i++){
         value[i] = -1;
     }
-    autoCell = ["gc1","gc2","gc3","gc4","gc5",,"gc6","gc7","gc8","gc9"];
+    autoCell = ["gc1","gc2","gc3","gc4","gc5","gc6","gc7","gc8","gc9"];
     console.log(autoCell);
 };
 
@@ -144,7 +147,7 @@ const handleCellClick1 = (e) => {
     const classList = e.target.classList;
     const location = classList[1];
     console.log("Location = ",location);
-    if (gameIsLive && classList[2] != 'X' && classList[2] != 'O'){
+    if (xIsNext1 && gameIsLive && classList[2] != 'X' && classList[2] != 'O' ){
         e.target.classList.add('X');
         checkGameStatus(location);     
         const ac = autoCell.indexOf(location);
@@ -158,12 +161,14 @@ const handleCellClick1 = (e) => {
         if (ac1 > -1){
             autoCell.splice(ac1, 1);
         }
+        if (!xIsNext1){
         for (const cellDiv1 of cellDivs){
             if (gameIsLive && cellDiv1.classList[1] == compCell && cellDiv1.classList[2] != 'X' && cellDiv1.classList[2] != 'O'){
                 cellDiv1.classList.add('O');
                 checkGameStatus(compCell);
             }
         }
+    }
     console.log('autoCell :>> ', autoCell);
 };
 
@@ -176,6 +181,7 @@ const gameOne = (e) => {
     one.classList.add('disp');
     const two = document.querySelector('.game');
     two.classList.remove('disp');
+
 
 for (const cellDiv of cellDivs) {
     cellDiv.addEventListener('click',handleCellClick);
