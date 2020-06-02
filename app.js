@@ -12,6 +12,7 @@ let gameIsLive = true;
 let xIsNext = true;
 let xIsNext1 = true;
 let winner = null;
+let aa = 1;
 
 
 //functions
@@ -21,7 +22,7 @@ function checkGameStatus(location){
         value[a-1] = 1;
     }
     else {
-        value[a-1] = 0
+        value[a-1] = 0;
     }
     //win checker
     if (value[0] == value[1] && value[1] == value[2] && value[0] >= 0){
@@ -93,14 +94,16 @@ function checkGameStatus(location){
         statusDiv.innerHTML = `$It's A Tie .`;
     }
     else {
-        if (xIsNext || xIsNext1){
+        if (aa == 0){
+            xIsNext1 = !xIsNext1;
+        }
+        else if (xIsNext ){
             statusDiv.innerHTML = `2's Chance`;
         }
         else{
             statusDiv.innerHTML = `1's Chance`;
         }
         xIsNext = !xIsNext;
-        xIsNext1 = !xIsNext1;
     }
 }
 
@@ -108,7 +111,12 @@ function checkGameStatus(location){
 const handleReset = (e) => {
     xIsNext = true;
     xIsNext1 = true;
+    if (aa == 0){
+        statusDiv.innerHTML = `Game Onn.`;
+    }
+    else {
     statusDiv.innerHTML = `1's Chance`;
+    }
     winner = null;
     gameIsLive = true;
     for (const cellClear of cellDivs){
@@ -146,7 +154,7 @@ const handleCellClick1 = (e) => {
     const classList = e.target.classList;
     const location = classList[1];
     console.log("Location = ",location);
-    if (xIsNext1 && classList[2] != 'X' && classList[2] != 'O' ){
+    if (xIsNext1 && classList[2] != 'X' && classList[2] != 'O'){
         e.target.classList.add('X');
         checkGameStatus(location);     
         const ac = autoCell.indexOf(location);
@@ -176,7 +184,7 @@ const handleCellClick1 = (e) => {
 //event listeners
 resetDiv.addEventListener('click', handleReset);
 
-const gameOne = (e) => {
+const gameOne = (e) => { 
     const one = document.querySelector('.home');
     one.classList.add('disp');
     const two = document.querySelector('.game');
@@ -188,7 +196,9 @@ for (const cellDiv of cellDivs) {
 }
 };
 
-const gameTwo = (e) => {
+const gameTwo = (e) => { 
+    aa = 0;
+    statusDiv.innerHTML = `Game Onn.`;
     const one = document.querySelector('.home');
     one.classList.add('disp');
     const two = document.querySelector('.game');
