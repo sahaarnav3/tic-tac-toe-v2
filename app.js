@@ -6,12 +6,13 @@ const button1 = document.querySelector('.op');
 const button2 = document.querySelector('.tp');
 let value = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
 let value1 = [0,1,2,3,4,5,6,7,8];
-let autoCell = ["gc1","gc2","gc3","gc4","gc5",,"gc6","gc7","gc8","gc9"];
+let autoCell = ["gc1","gc2","gc3","gc4","gc5","gc6","gc7","gc8","gc9"];
 
 //game variables
 let gameIsLive = true;
 let xIsNext = true;
 let winner = null;
+
 
 
 //functions
@@ -117,6 +118,8 @@ const handleReset = (e) => {
     for (let i=0; i < 9; i++){
         value[i] = -1;
     }
+    autoCell = ["gc1","gc2","gc3","gc4","gc5",,"gc6","gc7","gc8","gc9"];
+    console.log(autoCell);
 };
 
 const handleCellClick = (e) => {
@@ -138,13 +141,13 @@ const handleCellClick = (e) => {
 };
 
 const handleCellClick1 = (e) => {
-    const classList1 = e.target.classList;
-    const location = classList1[1];
+    const classList = e.target.classList;
+    const location = classList[1];
     console.log("Location = ",location);
-    if (gameIsLive && classList1[2] != 'X' && classList1[2] != 'O'){
-        e.target.classList1.add('X');
-        checkGameStatus(location);        
-        let ac = autoCell.indexOf(location);
+    if (gameIsLive && classList[2] != 'X' && classList[2] != 'O'){
+        e.target.classList.add('X');
+        checkGameStatus(location);     
+        const ac = autoCell.indexOf(location);
         if (ac > -1){
             autoCell.splice(ac, 1);
             }
@@ -156,7 +159,7 @@ const handleCellClick1 = (e) => {
             autoCell.splice(ac1, 1);
         }
         for (const cellDiv1 of cellDivs){
-            if (cellDiv1.classList[1] == compCell && cellDiv1.classList[2] != 'X' && cellDiv1.classList[2] != 'O'){
+            if (gameIsLive && cellDiv1.classList[1] == compCell && cellDiv1.classList[2] != 'X' && cellDiv1.classList[2] != 'O'){
                 cellDiv1.classList.add('O');
                 checkGameStatus(compCell);
             }
@@ -179,7 +182,6 @@ for (const cellDiv of cellDivs) {
 }
 };
 
-//helloooo
 const gameTwo = (e) => {
     const one = document.querySelector('.home');
     one.classList.add('disp');
